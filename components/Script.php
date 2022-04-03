@@ -65,4 +65,8 @@
         //   "responsive": true,
         // });
     });
+
+    function ShowData() {
+        document.getElementById("show-data").style.display = "block";
+    }
 </script>

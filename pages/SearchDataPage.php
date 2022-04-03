@@ -23,7 +23,7 @@
             if ($resultBooks->num_rows > 0) {
               while ($rowBooks = $resultBooks->fetch_assoc()) {
             ?>
-                <tr>
+                <tr id="show-data" style="display: none">
                   <td><?php echo $rowBooks["no"]; ?></td>
                   <td><?php echo $rowBooks["book_name"]; ?></td>
                   <td><?php echo $rowBooks["code"]; ?></td>
