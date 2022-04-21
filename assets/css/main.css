@@ -1,3 +1,6 @@
 .disclaimer {
   display: none;
 }
+input.form-control.form-control-md {
+  width: 308.3px !important;
+}
