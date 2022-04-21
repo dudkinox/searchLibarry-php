@@ -10,6 +10,7 @@
             <tr>
               <th>ลำดับ</th>
               <th>ชื่อหนังสือ</th>
+              <th>ชื่อผู้แต่ง</th>
               <th>เลขทะเบียน</th>
               <th>จำนวนเล่ม</th>
               <th>BIB ID</th>
@@ -22,10 +23,15 @@
             $resultBooks = $conn->query($queryBooks);
             if ($resultBooks->num_rows > 0) {
               while ($rowBooks = $resultBooks->fetch_assoc()) {
+                $nameBook = explode('^a', $rowBooks["book_name"])[1] ?? $rowBooks["book_name"];
+                $nameBook = explode('/^c', $nameBook)[0];
+                $nameBook = explode('/ ^c', $nameBook)[0];
+                $nameBook = explode('/^', $nameBook)[0];
             ?>
-                <tr id="show-data" style="display: none">
+                <tr id="show-data">
                   <td><?php echo $rowBooks["no"]; ?></td>
-                  <td><?php echo $rowBooks["book_name"]; ?></td>
+                  <td><?php echo $nameBook; ?></td>
+                  <td><?php echo explode('/^c', $rowBooks["book_name"])[1] ?? explode('/ ^c', $rowBooks["book_name"])[1] ?? explode('/^', $rowBooks["book_name"])[1] ?? "-"; ?></td>
                   <td><?php echo $rowBooks["code"]; ?></td>
                   <td><?php echo $rowBooks["amount"]; ?></td>
                   <td><?php echo $rowBooks["bib_id"]; ?></td>
